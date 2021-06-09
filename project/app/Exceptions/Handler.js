@@ -1,7 +1,10 @@
 'use strict'
 
+const Raven = require('raven')
+
 const BaseExceptionHandler = use('BaseExceptionHandler')
 const Env = use('Env')
+const Config = use('Config')
 
 //Formatador de erros
 const Youch = use('youch')
@@ -31,6 +34,8 @@ class ExceptionHandler extends BaseExceptionHandler {
     com outras ferramentas que lida com correçoes de erros
   */
   async report (error, { request }) {
+    //Raven.config(Config.get('services.sentry.dsn'))
+    //Raven.captureException(error)
   }
 }
 

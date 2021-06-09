@@ -9,4 +9,13 @@ Route.post('passwords', 'ForgotPasswordController.store')
 Route.put('passwords', 'ForgotPasswordController.update')
 
 Route.get('/files/:id', 'FileController.show')
-Route.post('files', 'FileController.store')
+
+Route.group(() => {
+  Route.post('files', 'FileController.store')
+
+  //Única rota que satisfaz todos os metodos do model Project
+  Route.resource('projects', 'ProjectController').apiOnly()
+
+  /* /projects/:projects_id/tasks/:id */
+  Route.resource('projects.tasks', 'TaskController').apiOnly()
+}).middleware(['auth'])

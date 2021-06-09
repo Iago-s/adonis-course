@@ -2,6 +2,7 @@
 
 const Mail = use('Mail')
 const User = use('App/Models/User')
+const Env = use('Env')
 
 const crypto = require('crypto')
 const moment = require('moment')
@@ -28,7 +29,7 @@ class ForgotPasswordController {
         message => {
           message
             .to(user.email)
-            .from('iagooliveira3845@gmail.com', 'Iago Silva')
+            .from(Env.get('EMAIL'), 'Iago Silva')
             .subject('Recumperação de senha')
         }
       );
